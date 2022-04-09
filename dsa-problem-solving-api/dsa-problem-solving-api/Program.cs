@@ -10,7 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // For Entity Framework 
-builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database=ProblemSolvingTrackerDb; Trusted_Connection= true"));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProblemContextConnectionString"));
+}); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
