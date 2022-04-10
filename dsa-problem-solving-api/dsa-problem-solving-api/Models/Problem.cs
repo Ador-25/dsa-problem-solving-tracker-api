@@ -12,10 +12,10 @@ namespace dsa_problem_solving_api.Models
         [Required]
         public int QuestionNo { get; set; }
         [Required]
-        public DifficultyLevel ProblemDifficulty { get; set; }
         public string Note { get; set; }
         public string Solution { get; set; }
         public bool NeedRepeat { get; set; }
+        public DifficultyLevel Difficulty { get; set; }
 
         [Required]
         public Platform Platform { get; set; }
@@ -28,4 +28,6 @@ namespace dsa_problem_solving_api.Models
         Medium,
         Hard
     }
+
+
 }
