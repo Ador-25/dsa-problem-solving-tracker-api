@@ -12,12 +12,24 @@ namespace dsa_problem_solving_api.Data
         }
         public Platform AddPlatform(Platform platform)
         {
-            throw new NotImplementedException();
+            platform.PlatformId=Guid.NewGuid();
+             _applicationDbContext.Platforms.Add(platform);
+            return platform;
         }
 
         public Platform EditPlatform(Guid platformId, Platform platform)
         {
-            throw new NotImplementedException();
+          var temp = _applicationDbContext.Platforms.SingleOrDefault(x => x.PlatformId == platformId);
+            if(temp == null)
+            {
+                return null;
+            }
+            else
+            {
+                temp = platform;
+            }
+
+            return temp;
         }
 
         public List<Platform> GetAllPlatforms()
@@ -27,7 +39,8 @@ namespace dsa_problem_solving_api.Data
 
         public Platform GetPlatform(string platformName)
         {
-            throw new NotImplementedException();
+        return _applicationDbContext.Platforms.SingleOrDefault(x => x.PlatformName == platformName);
+
         }
     }
 }

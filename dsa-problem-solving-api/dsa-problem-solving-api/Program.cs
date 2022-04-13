@@ -11,7 +11,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProblemContextConnectionString"));
 });
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IPlatformData, MockPlatformData>();
+builder.Services.AddSingleton<IPlatformData, SqlPlatformData>();
+builder.Services.AddSingleton<IProblemData, SqlProblemData>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
