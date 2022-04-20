@@ -1,5 +1,6 @@
 using dsa_problem_solving_api.Contexts;
 using dsa_problem_solving_api.Data;
+using dsa_problem_solving_api.Models;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -11,8 +12,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProblemContextConnectionString"));
 });
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IPlatformData, SqlPlatformData>();
-builder.Services.AddSingleton<IProblemData, SqlProblemData>();
+// builder.Services.AddSingleton<IPlatformData, SqlPlatformData>();
+// builder.Services.AddSingleton<IProblemData, SqlProblemData>();
+builder.Services.AddScoped<IGenericData<Platform>, SqlGenericPlatformData>();
+builder.Services.AddScoped<IGenericData<Problem>, SqlGenericProblemData>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
