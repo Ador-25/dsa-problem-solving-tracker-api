@@ -12,7 +12,10 @@ namespace dsa_problem_solving_api.Data
         }
         public Platform AddPlatform(Platform platform)
         {
-            throw new NotImplementedException();
+            platform.PlatformId = Guid.NewGuid();
+            _applicationDbContext.Platforms.Add(platform);
+            _applicationDbContext.SaveChanges();
+            return platform;
         }
 
         public Platform EditPlatform(Guid platformId, Platform platform)

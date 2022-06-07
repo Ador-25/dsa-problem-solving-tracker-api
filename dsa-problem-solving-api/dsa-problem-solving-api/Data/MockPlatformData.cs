@@ -9,8 +9,8 @@ namespace dsa_problem_solving_api.Data
 {
     public class MockPlatformData : IPlatformData
     {
-        private static Guid one = new Guid();
-        private static Guid two = new Guid();
+        private static Guid one = Guid.NewGuid();
+        private static Guid two = Guid.NewGuid();
         private readonly List<Platform> platforms = new List<Platform>()
         {
             new Platform()
@@ -18,7 +18,6 @@ namespace dsa_problem_solving_api.Data
                 PlatformId= one,
                 PlatformName="Geekforgeeks",
                 PlatformUrl="https://www.geeksforgeeks.org/",
-     
 
             },
             new Platform()
@@ -34,6 +33,7 @@ namespace dsa_problem_solving_api.Data
             platforms.Add(platform);
             return platform;
         }
+
 
         public Platform EditPlatform(Guid platformId, Platform platform)
         {
@@ -58,14 +58,7 @@ namespace dsa_problem_solving_api.Data
         public Platform GetPlatform(string platformName)
         {
             return platforms.SingleOrDefault(x => x.PlatformName == platformName);
-           /* for(int i = 0; i < platforms.Count; i++)
-            {
-                var temp = platforms.ElementAt(i);
-                if (temp.PlatformName == platformName)
-                    return temp;
-            }
-            return null;*/
-           
         }
+
     }
 }
