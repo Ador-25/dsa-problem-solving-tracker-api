@@ -9,45 +9,45 @@
 <h4>Problem</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create" autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group" style="margin:2%">
                 <label asp-for="ProblemUrl" class="control-label"></label>
                 <input asp-for="ProblemUrl" class="form-control" />
                 <span asp-validation-for="ProblemUrl" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin:2%">
+                <label asp-for="ProblemNumber" class="control-label"></label>
+                <input asp-for="ProblemNumber" class="form-control" />
+                <span asp-validation-for="ProblemNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin:2%">
                 <label asp-for="ProblemName" class="control-label"></label>
                 <input asp-for="ProblemName" class="form-control" />
                 <span asp-validation-for="ProblemName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin:2%">
                 <label asp-for="Note" class="control-label"></label>
                 <input asp-for="Note" class="form-control" />
                 <span asp-validation-for="Note" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            <div class="form-group form-check" style="margin:2%">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="NeedToRepeat" /> @Html.DisplayNameFor(model => model.NeedToRepeat)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group" style="margin:2%">
                 <label asp-for="DifficultyLevel" class="control-label"></label>
-                <select asp-for="DifficultyLevel" class="form-control"></select>
+                <select asp-for="DifficultyLevel"  asp-items="Html.GetEnumSelectList<DifficultyLevels>()"></select>
                 <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin:2%">
                 <label asp-for="Platform" class="control-label"></label>
-                <select asp-for="Platform" class="form-control"></select>
+                <select asp-for="Platform"  asp-items="Html.GetEnumSelectList<Platforms>()"></select>
                 <span asp-validation-for="Platform" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin:2%" >
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -55,7 +55,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" style="padding-left:26%">Back to List</a>
 </div>
 
 @section Scripts {

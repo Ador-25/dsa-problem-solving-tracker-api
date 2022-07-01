@@ -8,6 +8,8 @@ using System.Collections;
 namespace dsa_problem_solving_api.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
+
     public class PlatformController : ControllerBase
     {
         private readonly IPlatformData _platformData;
@@ -17,9 +19,9 @@ namespace dsa_problem_solving_api.Controllers
             _platformData = platformData;
 
         }
+        
         [HttpGet]
-        [Route("api/[controller]")]
-        public IActionResult GetPLatforms()
+        public IActionResult GetAllPLatforms()
         {
             return Ok(_platformData.GetAllPlatforms());
 
@@ -45,6 +47,28 @@ namespace dsa_problem_solving_api.Controllers
             return Ok(_platformData.EditPlatform(platform.PlatformId, platform));
         }
 
+
+        [HttpGet]
+        public IActionResult GetPLatforms([FromBody]string platformName)
+        {
+            return Ok(_platformData.GetPlatform(platformName));
+
+        }
+
+        [HttpPost]
+        public IActionResult AddPlatform([FromBody]Platform platform){
+          var a=_platformData.AddPlatform(platform);
+          return Ok(a);
+            
+        }
+
+
+        [HttpPut]
+        public IActionResult EditPlatForm(Guid platformId, Platform platform){
+          var a= _platformData.EditPlatform(platformId, platform);
+          return Ok(a);
+            
+        }
 
 
 

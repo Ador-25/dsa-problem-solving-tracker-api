@@ -56,10 +56,11 @@ namespace DSA_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform")] Problem problem)
+        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform")] Problem problem)
         {
             if (ModelState.IsValid)
             {
+                problem.Date = DateTime.Now;
                 _context.Add(problem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
