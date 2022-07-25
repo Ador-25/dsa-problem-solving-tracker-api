@@ -1,20 +1,23 @@
 ﻿@model IEnumerable<DSA_Tracker.Models.Problem>
-
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+.boolean-color {
+    background: red;
+    color:red;
+}
+</style>
 
-<h1>Index</h1>
+<h1>Practice Problems</h1>
+<h4>@ViewBag.Total</h4> 
+<div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+</div>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProblemUrl)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProblemName)
             </th>
@@ -23,6 +26,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NeedToRepeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.Tags)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DifficultyLevel)
@@ -40,16 +46,6 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @if (item.ProblemUrl.Length<=12)
-{
-  @Html.DisplayFor(modelItem => item.ProblemUrl)
-}
-else
-{
-  @(item.ProblemUrl.ToString().Substring(0, 20) + "...")
-}
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ProblemName)
             </td>
             <td>
@@ -58,8 +54,11 @@ else
                 else
                     @Html.DisplayFor(modeItem=> item.Note.ToString().Substring(0,20)+"...")
             </td>
-            <td>
+            <td class="boolean-color">
                 @Html.DisplayFor(modelItem => item.NeedToRepeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DifficultyLevel)

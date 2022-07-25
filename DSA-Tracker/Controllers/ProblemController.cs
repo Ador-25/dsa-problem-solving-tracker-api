@@ -12,7 +12,7 @@ namespace DSA_Tracker.Controllers
 {
     public class ProblemController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private static ApplicationDbContext _context;
 
         public ProblemController(ApplicationDbContext context)
         {
@@ -22,10 +22,24 @@ namespace DSA_Tracker.Controllers
         // GET: Problem
         public async Task<IActionResult> Index()
         {
-              return _context.Problems != null ? 
+            /*
+             *     List<Problem> problems = _context.Problems.ToList();
+               ViewBag.Message = "Total";
+               dynamic mymodel = new ExpandoObject();
+               mymodel.Problems = problems;
+               return _context.Problems != null ? 
+                             View(await mymodel) :
+                             Problem("Entity set 'ApplicationDbContext.Problems'  is null.");
+             */
+            ViewBag.Total = "Total Problems Solved: " + _context.Problems.ToList().Count();
+            return _context.Problems != null ? 
                           View(await _context.Problems.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Problems'  is null.");
         }
+        public int TotalNumberOfProblems()
+        {
+            return _context.Problems.Count();
+;       }
 
         // GET: Problem/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -56,7 +70,7 @@ namespace DSA_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform")] Problem problem)
+        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags")] Problem problem)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +103,7 @@ namespace DSA_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProblemId,ProblemUrl,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform")] Problem problem)
+        public async Task<IActionResult> Edit(int id, [Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags")] Problem problem)
         {
             if (id != problem.ProblemId)
             {

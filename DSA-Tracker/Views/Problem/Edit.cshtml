@@ -24,9 +24,19 @@
                 <span asp-validation-for="ProblemName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ProblemNumber" class="control-label"></label>
+                <input asp-for="ProblemNumber" class="form-control" />
+                <span asp-validation-for="ProblemNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Note" class="control-label"></label>
                 <input asp-for="Note" class="form-control" />
                 <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label"></label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -35,17 +45,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <input disabled="true" asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DifficultyLevel" class="control-label"></label>
-                <select asp-for="DifficultyLevel" class="form-control"></select>
+                <select asp-for="DifficultyLevel"  asp-items="Html.GetEnumSelectList<DifficultyLevels>()"></select>
                 <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Platform" class="control-label"></label>
-                <select asp-for="Platform" class="form-control"></select>
+                 <label asp-for="Platform" class="control-label"></label>
+                <select asp-for="Platform"  asp-items="Html.GetEnumSelectList<Platforms>()"></select>
                 <span asp-validation-for="Platform" class="text-danger"></span>
             </div>
             <div class="form-group">

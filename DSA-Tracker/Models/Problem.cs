@@ -30,6 +30,10 @@ namespace DSA_Tracker.Models
         public DifficultyLevels DifficultyLevel { get; set; }
         [DisplayName("Platform")]
         public Platforms Platform { get; set; }
+
+        [DisplayName("Tags")]
+        [Required]
+        public string Tags { get; set; }
     }
     public enum DifficultyLevels
     {

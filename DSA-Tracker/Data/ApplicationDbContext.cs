@@ -1,6 +1,6 @@
 ﻿using DSA_Tracker.Models;
 using Microsoft.EntityFrameworkCore;
-
+using DSA_Tracker.Areas.Identity.Data;
 namespace DSA_Tracker.Data
 {
     public class ApplicationDbContext : DbContext
@@ -9,6 +9,8 @@ namespace DSA_Tracker.Data
         {
 
         }
+        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Problem> Problems { get; set; }
+       
     }
 }

@@ -28,5 +28,9 @@ namespace DSA_Tracker.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public string TellMeDate()
+        {
+            return DateTime.Today.ToString();
+        }
     }
 }
