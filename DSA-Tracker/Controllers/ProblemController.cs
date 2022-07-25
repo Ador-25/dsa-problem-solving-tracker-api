@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSA_Tracker.Data;
 using DSA_Tracker.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DSA_Tracker.Controllers
 {
+    [Authorize]
     public class ProblemController : Controller
     {
         private static ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace DSA_Tracker.Controllers
         }
 
         // GET: Problem
+
         public async Task<IActionResult> Index()
         {
             /*

@@ -10098,11 +10098,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Projects\\dsa-problem-solving-tracker-api\\DSA-Tracker\\DSA-Tracker.csproj",
+      "projectUniqueName": "D:\\My Projects\\Github Projects\\dsa-tracker-asp-.net-core-mvc-api\\DSA-Tracker\\DSA-Tracker.csproj",
       "projectName": "DSA-Tracker",
-      "projectPath": "D:\\My Projects\\dsa-problem-solving-tracker-api\\DSA-Tracker\\DSA-Tracker.csproj",
+      "projectPath": "D:\\My Projects\\Github Projects\\dsa-tracker-asp-.net-core-mvc-api\\DSA-Tracker\\DSA-Tracker.csproj",
       "packagesPath": "C:\\Users\\Ador\\.nuget\\packages\\",
-      "outputPath": "D:\\My Projects\\dsa-problem-solving-tracker-api\\DSA-Tracker\\obj\\",
+      "outputPath": "D:\\My Projects\\Github Projects\\dsa-tracker-asp-.net-core-mvc-api\\DSA-Tracker\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ador\\AppData\\Roaming\\NuGet\\NuGet.Config",
