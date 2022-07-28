@@ -7,6 +7,7 @@ namespace DSA_Tracker.Data
         public List<Problem> GetAllProblems();
         public Problem GetProblem(int id);
         public int TotalProblems();
+        public User AddUser(User user);
 
     }
 }

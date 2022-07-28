@@ -22,9 +22,11 @@ namespace DSA_Tracker.Controllers
         }
 
         // GET: Problem
-
+        // TRY IACTION
+        [Authorize]
         public async Task<IActionResult> Index()
         {
+            string userEmail = User.Identity.Name;
             /*
              *     List<Problem> problems = _context.Problems.ToList();
                ViewBag.Message = "Total";
@@ -34,15 +36,17 @@ namespace DSA_Tracker.Controllers
                              View(await mymodel) :
                              Problem("Entity set 'ApplicationDbContext.Problems'  is null.");
              */
-            ViewBag.Total = "Total Problems Solved: " + _context.Problems.ToList().Count();
+            ViewBag.Total = "Total Problems Solved: " + 
+                _context.Problems
+                .Where(user=>user.User.Email==userEmail)
+                .ToList()
+                .Count();
             return _context.Problems != null ? 
-                          View(await _context.Problems.ToListAsync()) :
+                          View(await _context.Problems
+                          .Where(user=>user.User.Email==userEmail)
+                          .ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Problems'  is null.");
         }
-        public int TotalNumberOfProblems()
-        {
-            return _context.Problems.Count();
-;       }
 
         // GET: Problem/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -58,6 +62,12 @@ namespace DSA_Tracker.Controllers
             {
                 return NotFound();
             }
+            List<Solution> solutions = _context
+                .Solutions
+                .Where(sol => sol.Problem.ProblemId == id)
+                .ToList();
+            ViewBag.TotalSolutions = solutions.Count();
+            ViewData["solutions"] = solutions;
 
             return View(problem);
         }
@@ -71,17 +81,22 @@ namespace DSA_Tracker.Controllers
         // POST: Problem/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags")] Problem problem)
         {
-            if (ModelState.IsValid)
-            {
+            var username = User.Identity.Name;
+            problem.User = _context.Users.Find(username);
+
+            // modelstate.is valid => make it work
+                // work here
+                
+                //problem.User.Email = userName;
                 problem.Date = DateTime.Now;
                 _context.Add(problem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
             return View(problem);
         }
 
@@ -113,26 +128,25 @@ namespace DSA_Tracker.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid){} => put try catch inside this
+
+            try
             {
-                try
-                {
-                    _context.Update(problem);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProblemExists(problem.ProblemId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(problem);
+                await _context.SaveChangesAsync();
             }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProblemExists(problem.ProblemId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
             return View(problem);
         }
 

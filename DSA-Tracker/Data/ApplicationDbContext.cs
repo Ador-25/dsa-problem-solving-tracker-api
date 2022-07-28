@@ -9,8 +9,13 @@ namespace DSA_Tracker.Data
         {
 
         }
-        public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Problem> Problems { get; set; }
-       
+        public DbSet<Solution> Solutions { get; set; }
+
+        // create user liked solution n-n relation
+        // search other user's solutions
+        // create user commented on solution n-n relation
+
     }
 }

@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using DSA_Tracker.Data;
+using DSA_Tracker.Models;
 
 namespace DSA_Tracker.Areas.Identity.Pages.Account
 {
@@ -30,13 +32,16 @@ namespace DSA_Tracker.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IProblemData _data;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IProblemData data
+            )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +49,7 @@ namespace DSA_Tracker.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _data = data;
         }
 
         /// <summary>
@@ -125,6 +131,11 @@ namespace DSA_Tracker.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    User temp = new User();
+                    temp.FullName = Input.FullName;
+                    temp.Email = Input.Email;
+                    _data.AddUser(temp);
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);

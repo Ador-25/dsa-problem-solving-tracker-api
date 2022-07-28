@@ -9,6 +9,14 @@ namespace DSA_Tracker.Data
         {
             _context = context;
         }
+
+        public User AddUser(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
+        }
+
         public List<Problem> GetAllProblems()
         {
             return _context.Problems.ToList();

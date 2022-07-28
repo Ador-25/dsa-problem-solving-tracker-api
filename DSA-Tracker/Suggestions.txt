@@ -1,0 +1,13 @@
+=> ApplicationDbContext migration -DONE
+=> insert user on Register - DONE
+=> check user list - DONE
+=> solve issue=>(problem must have one user) - DONE
+=> use authorization to assign a user to problem - DONE
+=> user only finds problems he created - DONE
+=> add solution in problem page - DONE
+=> edit method fix - DONE
+
+
+=> load past solutions
+=> solution controller+crud
+=> solution display page

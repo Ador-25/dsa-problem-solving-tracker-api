@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DSA_Tracker.Models
 {
-    public class User: IdentityUser
+    public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public string Email { get; set; }
         public string FullName { get; set; }
 
         //Auth - https://www.youtube.com/watch?v=Kaseth2ppMk&ab_channel=TeddySmith

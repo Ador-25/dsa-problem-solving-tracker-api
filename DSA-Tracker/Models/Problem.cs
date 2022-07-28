@@ -34,6 +34,7 @@ namespace DSA_Tracker.Models
         [DisplayName("Tags")]
         [Required]
         public string Tags { get; set; }
+        public User User { get; set; }
     }
     public enum DifficultyLevels
     {
