@@ -5,22 +5,28 @@ using DSA_Tracker.Areas.Identity.Data;
 using DSA_Tracker.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//for identity database=> 
 builder.Services.AddDbContext<IdentityDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDbContextConnection")));
-
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IdentityDbContext>();
-// Add services to the container.
+
+
 builder.Services.AddControllersWithViews();
 
-// add services
+// add application db context
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DsaConnection")));
 
+
+// add services
 builder.Services.AddScoped<IProblemData, SqlProblemData>();
 
+
+// add google authentication
 
 
 //builder.Services.AddAuthentication()
@@ -50,6 +56,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Problem}/{action=Index}/{id?}");
+
+// for razor pages
 app.MapRazorPages();
 
 app.Run();

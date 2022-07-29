@@ -10,4 +10,7 @@
 
 => load past solutions
 => solution controller+crud
-=> solution display page
+=> solution details display page
+=> write api
+=> add google login
+=> deploy
