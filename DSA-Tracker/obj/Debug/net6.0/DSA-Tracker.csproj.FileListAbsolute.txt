@@ -548,3 +548,4 @@ D:\My Projects\Github Projects\dsa-tracker-asp-.net-core-mvc-api\DSA-Tracker\obj
 D:\My Projects\Github Projects\dsa-tracker-asp-.net-core-mvc-api\DSA-Tracker\obj\Debug\net6.0\DSA-Tracker.pdb
 D:\My Projects\Github Projects\dsa-tracker-asp-.net-core-mvc-api\DSA-Tracker\obj\Debug\net6.0\DSA-Tracker.genruntimeconfig.cache
 D:\My Projects\Github Projects\dsa-tracker-asp-.net-core-mvc-api\DSA-Tracker\obj\Debug\net6.0\ref\DSA-Tracker.dll
+D:\My Projects\Github Projects\dsa-tracker-asp-.net-core-mvc-api\DSA-Tracker\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

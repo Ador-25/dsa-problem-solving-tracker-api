@@ -30,7 +30,8 @@ builder.Services.AddAuthentication()
 //for apis
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 //
 
 var app = builder.Build();
@@ -51,6 +52,8 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
     endpoints.MapControllers();
 });
+
+
 //
 
 

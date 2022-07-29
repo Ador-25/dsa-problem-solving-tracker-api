@@ -22,6 +22,10 @@
 
 ISSUE:
 
+
+Add JWT Authentication *********************
+Complete Apis **********************
+
 When Login with google, user table not inserting
 while inserting has to create that instance in user table ***
 => solve it									=>>>>>>>>>>>>>>>>>>>                          Solved

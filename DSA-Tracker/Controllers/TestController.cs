@@ -7,7 +7,8 @@ namespace DSA_Tracker.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        [HttpGet]
+        //endpoint: http://localhost:5207/api/test/strings
+        [HttpGet("strings")]
         public IActionResult TestMethod()
         {
             return Ok(new string[]{ 

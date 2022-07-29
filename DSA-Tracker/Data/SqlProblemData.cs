@@ -11,6 +11,12 @@ namespace DSA_Tracker.Data
             _context = context;
         }
 
+      
+        public DifficultyCounterHelper DifficultyPerProblemHelper(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Problem> GetAllProblems(string email)
         {
             return _context
@@ -23,6 +29,21 @@ namespace DSA_Tracker.Data
         {
             var search=_context.Problems.Find(id);
             return search;
+        }
+
+        public PlatformCountHelper ProblemsPerPlatform(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TagCounterHelper ProblemTags(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string[] Tags(string email)
+        {
+            throw new NotImplementedException();
         }
 
         public int TotalProblems()
