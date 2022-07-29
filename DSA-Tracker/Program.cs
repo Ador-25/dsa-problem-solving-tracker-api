@@ -27,6 +27,12 @@ builder.Services.AddAuthentication()
     googleOptions.ClientSecret = "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";
 });
 
+//for apis
+builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+
+//
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -38,6 +44,15 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication(); 
 app.UseAuthorization();
+
+//for apis
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+    endpoints.MapControllers();
+});
+//
+
 
 
 app.MapControllerRoute(
