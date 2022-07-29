@@ -121,6 +121,9 @@ namespace DSA_Tracker.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            // new line
+            ExternalLoginInfo info = await _signInManager.GetExternalLoginInfoAsync();
+            //string name = info.ProviderDisplayName;
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
@@ -133,6 +136,10 @@ namespace DSA_Tracker.Areas.Identity.Pages.Account
                 {
                     User temp = new User();
                     temp.FullName = Input.FullName;
+                    if (Input.FullName == null)
+                    {
+                        temp.FullName = info.ProviderDisplayName;
+                    }
                     temp.Email = Input.Email;
                     _data.AddUser(temp);
 

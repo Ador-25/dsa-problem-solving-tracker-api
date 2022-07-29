@@ -89,6 +89,16 @@ namespace DSA_Tracker.Controllers
             var username = User.Identity.Name;
             problem.User = _context.Users.Find(username);
 
+            // manually creating user with authenticated info
+            if(problem.User == null)
+            {
+                User user = new User();
+                user.Email = username;
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                problem.User = user;
+            }
+
             // modelstate.is valid => make it work
                 // work here
                 

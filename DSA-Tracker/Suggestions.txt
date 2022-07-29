@@ -12,5 +12,22 @@
 => solution controller+crud
 => solution details display page
 => write api
-=> add google login
+=> add google login => read->https://stackoverflow.com/questions/48846934/how-to-enable-external-authentication-in-an-asp-net-core-razor-pages-project
+						   -> http://www.voidgeeks.com/tutorial/How-to-Add-Google-Authentication-in-ASPNET-Core-Application/17
+
+						   -> solution : https://www.freecodecamp.org/news/authentication-using-google-in-asp-net-core-2-0-5ec32c803e23/
 => deploy
+
+
+
+ISSUE:
+
+When Login with google, user table not inserting
+while inserting has to create that instance in user table ***
+=> solve it
+
+Take FullName when login/sign up with google
+Populate User table when login/sign up with google
+********* MERGE IDENTITY 1-N**************
+
+=> READ => https://entityframework.net/knowledge-base/32594641/how-to-make-one-to-many-relationship-with-asp-identity-users

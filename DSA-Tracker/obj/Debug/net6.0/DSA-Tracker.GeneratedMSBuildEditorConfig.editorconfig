@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\My Projects\Github Projects\dsa-tracker-asp-.net-core-mvc-api\DSA-Tracker
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/My Projects/Github Projects/dsa-tracker-asp-.net-core-mvc-api/DSA-Tracker/Areas/Identity/Pages/Account/GoogleLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxHb29nbGVMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/My Projects/Github Projects/dsa-tracker-asp-.net-core-mvc-api/DSA-Tracker/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

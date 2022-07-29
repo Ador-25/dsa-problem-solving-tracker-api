@@ -27,7 +27,12 @@ builder.Services.AddScoped<IProblemData, SqlProblemData>();
 
 
 // add google authentication
-
+builder.Services.AddAuthentication()
+    .AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = "630347173667-716ei4o8i70dlken2jq69ui5ccvfh228.apps.googleusercontent.com";
+    googleOptions.ClientSecret = "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";
+});
 
 //builder.Services.AddAuthentication()
 //    .AddFacebook(options =>
@@ -55,7 +60,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Problem}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // for razor pages
 app.MapRazorPages();

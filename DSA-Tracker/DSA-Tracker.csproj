@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>DSA_Tracker</RootNamespace>
+    <UserSecretsId>d061d30c-45a8-4f38-8c84-74ff31cf4bad</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
