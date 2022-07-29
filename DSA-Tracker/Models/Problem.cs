@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using DSA_Tracker.Areas.Identity.Data;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace DSA_Tracker.Models
@@ -34,7 +35,9 @@ namespace DSA_Tracker.Models
         [DisplayName("Tags")]
         [Required]
         public string Tags { get; set; }
-        public User User { get; set; }
+        public string ApplicationUserID { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        
     }
     public enum DifficultyLevels
     {
@@ -48,6 +51,7 @@ namespace DSA_Tracker.Models
         Codeforces,
         Hackerrank,
         GeeksforGeeks,
-        CrackingCodingInterview
+        CrackingCodingInterview,
+        CSES
     }
 }

@@ -8,17 +8,21 @@ using Microsoft.EntityFrameworkCore;
 using DSA_Tracker.Data;
 using DSA_Tracker.Models;
 using Microsoft.AspNetCore.Authorization;
+using DSA_Tracker.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace DSA_Tracker.Controllers
 {
     [Authorize]
     public class ProblemController : Controller
     {
-        private static ApplicationDbContext _context;
+        private static IdentityDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProblemController(ApplicationDbContext context)
+        public ProblemController(IdentityDbContext context,UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Problem
@@ -38,12 +42,12 @@ namespace DSA_Tracker.Controllers
              */
             ViewBag.Total = "Total Problems Solved: " + 
                 _context.Problems
-                .Where(user=>user.User.Email==userEmail)
+                .Where(user=>user.ApplicationUser.Email==userEmail)
                 .ToList()
                 .Count();
             return _context.Problems != null ? 
                           View(await _context.Problems
-                          .Where(user=>user.User.Email==userEmail)
+                          .Where(user=>user.ApplicationUser.Email==userEmail)
                           .ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Problems'  is null.");
         }
@@ -86,23 +90,10 @@ namespace DSA_Tracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags")] Problem problem)
         {
-            var username = User.Identity.Name;
-            problem.User = _context.Users.Find(username);
+                var username = User.Identity.Name;
+                problem.ApplicationUser = await _userManager.GetUserAsync(User);
 
-            // manually creating user with authenticated info
-            if(problem.User == null)
-            {
-                User user = new User();
-                user.Email = username;
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                problem.User = user;
-            }
-
-            // modelstate.is valid => make it work
-                // work here
-                
-                //problem.User.Email = userName;
+                problem.ApplicationUserID= problem.ApplicationUser.Id;
                 problem.Date = DateTime.Now;
                 _context.Add(problem);
                 await _context.SaveChangesAsync();

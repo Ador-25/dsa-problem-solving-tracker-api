@@ -1,4 +1,5 @@
 ﻿using DSA_Tracker.Areas.Identity.Data;
+using DSA_Tracker.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,8 @@ public class IdentityDbContext : IdentityDbContext<ApplicationUser>
         : base(options)
     {
     }
-    
+    public DbSet<Problem> Problems { get; set; }
+    public DbSet<Solution> Solutions { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

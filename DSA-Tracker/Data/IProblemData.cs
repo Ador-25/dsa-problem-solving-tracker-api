@@ -4,10 +4,9 @@ namespace DSA_Tracker.Data
 {
     public interface IProblemData
     {
-        public List<Problem> GetAllProblems();
+        public List<Problem> GetAllProblems(string email);
         public Problem GetProblem(int id);
         public int TotalProblems();
-        public User AddUser(User user);
 
     }
 }

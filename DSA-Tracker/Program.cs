@@ -14,14 +14,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IdentityDbContext>();
 
-
 builder.Services.AddControllersWithViews();
-
-// add application db context
-builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DsaConnection")));
-
-
 // add services
 builder.Services.AddScoped<IProblemData, SqlProblemData>();
 
@@ -34,17 +27,6 @@ builder.Services.AddAuthentication()
     googleOptions.ClientSecret = "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";
 });
 
-//builder.Services.AddAuthentication()
-//    .AddFacebook(options =>
-//    {
-//        options.AppId = "test";
-//        options.AppSecret = "test";
-//    })
-//    .AddGoogle(options =>
-//    {
-//        options.ClientId = "test";
-//        options.ClientSecret = "test";
-//    });
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -24,10 +24,10 @@ ISSUE:
 
 When Login with google, user table not inserting
 while inserting has to create that instance in user table ***
-=> solve it
+=> solve it									=>>>>>>>>>>>>>>>>>>>                          Solved
 
 Take FullName when login/sign up with google
 Populate User table when login/sign up with google
-********* MERGE IDENTITY 1-N**************
+********* MERGE IDENTITY 1-N**************  =>>>>>>>>>>>>>>>>>>>>                         DONE
 
 => READ => https://entityframework.net/knowledge-base/32594641/how-to-make-one-to-many-relationship-with-asp-identity-users

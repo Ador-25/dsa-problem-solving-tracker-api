@@ -134,14 +134,7 @@ namespace DSA_Tracker.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    User temp = new User();
-                    temp.FullName = Input.FullName;
-                    if (Input.FullName == null)
-                    {
-                        temp.FullName = info.ProviderDisplayName;
-                    }
-                    temp.Email = Input.Email;
-                    _data.AddUser(temp);
+                   
 
                     _logger.LogInformation("User created a new account with password.");
 
