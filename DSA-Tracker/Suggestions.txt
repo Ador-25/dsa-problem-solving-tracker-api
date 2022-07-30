@@ -22,6 +22,8 @@
 
 ISSUE:
 
+show substring error*
+fix edit* => DONE
 
 Add JWT Authentication *********************
 Complete Apis **********************

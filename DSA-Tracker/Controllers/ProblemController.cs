@@ -133,6 +133,9 @@ namespace DSA_Tracker.Controllers
 
             try
             {
+                var username = User.Identity.Name;
+                problem.ApplicationUser = await _userManager.GetUserAsync(User);
+                problem.ApplicationUserID = problem.ApplicationUser.Id;
                 _context.Update(problem);
                 await _context.SaveChangesAsync();
             }
