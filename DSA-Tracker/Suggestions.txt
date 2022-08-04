@@ -22,10 +22,12 @@
 
 ISSUE:
 
-show substring error*
+=> add scrapper to get text from url
+
+showing substring error*
 fix edit* => DONE
 
-Add JWT Authentication *********************
+Add JWT Authentication =>DONE
 Complete Apis **********************
 
 When Login with google, user table not inserting
