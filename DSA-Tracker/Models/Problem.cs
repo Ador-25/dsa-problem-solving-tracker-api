@@ -35,6 +35,11 @@ namespace DSA_Tracker.Models
         [DisplayName("Tags")]
         [Required]
         public string Tags { get; set; }
+
+        [DisplayName("Solution")]
+        public string? SolutionUrl { get; set; }
+        [DisplayName("Companies")]
+        public string? Companies { get; set; }
         public string ApplicationUserID { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         
@@ -52,6 +57,7 @@ namespace DSA_Tracker.Models
         Hackerrank,
         GeeksforGeeks,
         CrackingCodingInterview,
-        CSES
+        CSES,
+        CodingNinjas
     }
 }

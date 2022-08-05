@@ -66,12 +66,6 @@ namespace DSA_Tracker.Controllers
             {
                 return NotFound();
             }
-            List<Solution> solutions = _context
-                .Solutions
-                .Where(sol => sol.Problem.ProblemId == id)
-                .ToList();
-            ViewBag.TotalSolutions = solutions.Count();
-            ViewData["solutions"] = solutions;
 
             return View(problem);
         }
@@ -88,7 +82,7 @@ namespace DSA_Tracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags")] Problem problem)
+        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags,SolutionUrl")] Problem problem)
         {
                 var username = User.Identity.Name;
                 problem.ApplicationUser = await _userManager.GetUserAsync(User);
@@ -122,7 +116,7 @@ namespace DSA_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags")] Problem problem)
+        public async Task<IActionResult> Edit(int id, [Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags,SolutionUrl")] Problem problem)
         {
             if (id != problem.ProblemId)
             {

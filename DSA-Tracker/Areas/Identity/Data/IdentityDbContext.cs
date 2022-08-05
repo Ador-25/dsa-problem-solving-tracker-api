@@ -14,7 +14,6 @@ public class IdentityDbContext : IdentityDbContext<ApplicationUser>
     {
     }
     public DbSet<Problem> Problems { get; set; }
-    public DbSet<Solution> Solutions { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
