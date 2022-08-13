@@ -82,7 +82,9 @@ namespace DSA_Tracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags,SolutionUrl")] Problem problem)
+        public async Task<IActionResult> Create([Bind("ProblemId,ProblemUrl,ProblemNumber," +
+            "ProblemName,Note,NeedToRepeat,Date,DifficultyLevel," +
+            "Platform,Tags,SolutionUrl,Companies")] Problem problem)
         {
                 var username = User.Identity.Name;
                 problem.ApplicationUser = await _userManager.GetUserAsync(User);
@@ -116,7 +118,10 @@ namespace DSA_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProblemId,ProblemUrl,ProblemNumber,ProblemName,Note,NeedToRepeat,Date,DifficultyLevel,Platform,Tags,SolutionUrl")] Problem problem)
+        public async Task<IActionResult> Edit(int id, 
+            [Bind("ProblemId,ProblemUrl,ProblemNumber," +
+            "ProblemName,Note,NeedToRepeat,DifficultyLevel," +
+            "Platform,Tags,SolutionUrl,Companies")] Problem problem)
         {
             if (id != problem.ProblemId)
             {
@@ -130,6 +135,7 @@ namespace DSA_Tracker.Controllers
                 var username = User.Identity.Name;
                 problem.ApplicationUser = await _userManager.GetUserAsync(User);
                 problem.ApplicationUserID = problem.ApplicationUser.Id;
+                problem.Date= DateTime.Now;
                 _context.Update(problem);
                 await _context.SaveChangesAsync();
             }

@@ -8,12 +8,6 @@
 </style>
 <h1>Details</h1>
 <div><h4>Problem</h4></div>
-    <div>
-        <div >
-            <h4>Number of solutions: @ViewBag.TotalSolutions</h4>
-        </div>
-    </div>
-
 
 <div class="row">
         <hr />
@@ -52,6 +46,13 @@ border-width:3">
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Tags)
+        </dd>
+
+      <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Companies)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Companies)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Note)

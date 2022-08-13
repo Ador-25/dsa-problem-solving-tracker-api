@@ -25,6 +25,8 @@ namespace DSA_Tracker.Models
         public string Note { get; set; }
         [DisplayName("Repeat")]
         public bool NeedToRepeat { get; set; }
+
+        [DisplayName("Last Modified")]
         [DisplayFormat(DataFormatString ="{0:MMM-dd-yy HH:mm:ss}")]
         public DateTime Date { get; set; }
         [DisplayName("Difficulty")]
@@ -58,6 +60,7 @@ namespace DSA_Tracker.Models
         GeeksforGeeks,
         CrackingCodingInterview,
         CSES,
-        CodingNinjas
+        CodingNinjas,
+        BinarySearch
     }
 }

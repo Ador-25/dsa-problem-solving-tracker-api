@@ -7,10 +7,8 @@
 => add solution in problem page - DONE
 => edit method fix - DONE
 
+=> whow companies while details,create & edit - DONE
 
-=> load past solutions
-=> solution controller+crud
-=> solution details display page
 => write api
 => add google login => read->https://stackoverflow.com/questions/48846934/how-to-enable-external-authentication-in-an-asp-net-core-razor-pages-project
 						   -> http://www.voidgeeks.com/tutorial/How-to-Add-Google-Authentication-in-ASPNET-Core-Application/17
@@ -20,7 +18,11 @@
 
 
 
+
+
 ISSUE:
+
+=> create trackof date created
 
 => add scrapper to get text from url
 
